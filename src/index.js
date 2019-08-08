@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 
@@ -27,6 +27,7 @@ function totalExercises(parts) {
 
 const App = () => {
 
+    const [counter, setCounter] = useState(0)
     const course = {
         name: 'Half Stack application development',
         parts: [
@@ -47,11 +48,24 @@ const App = () => {
 
 
     return (
-        <div>
-            <Header course={course.name} />
-            <Content parts={course.parts} />
-            <Total total={totalExercises(course.parts)} />
-        </div>
+        <>
+            <div>
+                <Header course={course.name} />
+                <Content parts={course.parts} />
+                <Total total={totalExercises(course.parts)} />
+            </div>
+
+            <div>
+                <div>{counter}</div>
+
+                <button onClick={() => setCounter(counter + 1)}> plus </button>
+
+                <button onClick={() => setCounter(counter - 1)}> minus </button>
+
+                <button onClick={() => setCounter(0)}> zero </button>
+            </div>
+
+        </>
 
     )
 }
